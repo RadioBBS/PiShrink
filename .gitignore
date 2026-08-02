@@ -1,0 +1,19 @@
+# Lauf-Logs (ASCII-Dateiname laut Style-Guide)
+pishrink.log
+*.log
+
+# Image-Artefakte
+*.img
+*.img.gz
+*.img.xz
+*.gz
+*.xz
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Backup der Upstream-Dockerfile (falls lokal vorhanden)
+Dockerfile.upstream.bak

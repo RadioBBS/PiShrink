@@ -1,0 +1,18 @@
+FROM debian:bookworm
+
+# Abhaengigkeiten fuer PiShrink
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		wget parted gzip pigz xz-utils udev e2fsprogs ca-certificates \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+
+ENV LANG=C.UTF-8
+ENV TERM=xterm-256color
+ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /workdir
+
+COPY pishrink.sh /usr/local/bin/pishrink
+RUN chmod +x /usr/local/bin/pishrink
+
+ENTRYPOINT ["/usr/local/bin/pishrink"]
