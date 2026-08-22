@@ -1,0 +1,29 @@
+# PiShrink – Projektdefinition (Bash; pyproject fuer einheitliche Produktstruktur).
+#
+# Projekt:     PiShrink
+# Modul:       pyproject.toml
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+#
+# Historie
+# --------
+# Version 1.0.0 – 2026-08-02 – Erste deutsche Lokalisierung nach Styleguide.
+# Version 1.1.0 – 2026-08-22 – Styleguide 1.6.0, Git-Repo, Projektdateien.
+#
+# Kein Python-Paket. Keine pip-Abhaengigkeiten.
+
+[project]
+name = "pishrink"
+version = "1.1.0"
+description = "Bash-Skript zum automatischen Verkleinern von Raspberry-Pi-Image-Dateien."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "(FFHB) / RadioBBS" }]
+dependencies = []

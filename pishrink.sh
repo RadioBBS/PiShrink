@@ -1,74 +1,48 @@
 #!/usr/bin/env bash
 #
-# =============================================================================
-# pishrink.sh - Verkleinern von Raspberry-Pi-Image-Dateien
-# =============================================================================
+# PiShrink – Raspberry-Pi-Image-Dateien verkleinern.
 #
-# Programmbeschreibung:
-#   Bash-Skript zum automatischen Verkleinern von Raspberry-Pi-Image-Dateien.
-#   Beim naechsten Boot kann das Dateisystem wieder auf die volle SD-Karten-
-#   Groesse erweitert werden. Optional: gzip-/xz-Kompression inkl. Parallelmodus.
+# Projekt:     PiShrink
+# Modul:       pishrink.sh
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
 #
-# Zweck:
-#   Images nach dem Backup schrumpfen, damit Schreiben und Komprimieren
-#   schneller und speicherfreundlicher werden.
+# Beschreibung
+# ------------
+# Verkleinert Raspberry-Pi-Disk-Images (letzte ext2/3/4-Partition).
+# Beim naechsten Boot kann das Dateisystem wieder auf die volle SD-Karte
+# wachsen. Optional gzip-/xz-Kompression inkl. Parallelmodus (pigz/xz -T0).
+# Deutsche Lokalisierung nach Styleguide 1.6.0 (Hilfe, Version, Logging,
+# --Ende, dokumentierte Funktionen, zentrale Fehlerbehandlung).
 #
-# Autor:
-#   Original: Drew Bonasera (Drewsif) - https://github.com/Drewsif/PiShrink
-#   Deutsche Lokalisierung / Style-Guide: Cursor Assistant
+# Historie
+# --------
+# Version 26.03.16 – 2026-03-16 – Upstream PiShrink (Drewsif).
+# Version 1.0.0    – 2026-08-02 – Deutsche Lokalisierung nach Style-Guide.
+# Version 1.1.0    – 2026-08-22 – Dateikopf Styleguide 1.6.0, Autor
+#                              (FFHB) / RadioBBS, sudo in Beispielen,
+#                              Projektdateien (CHANGELOG, requirements,
+#                              PROJECT.yaml, pyproject.toml), Git-Repo.
 #
-# Version:
-#   1.0.0
-#
-# Aenderungsverlauf:
-#   - Version 26.03.16 - 2026-03-16 - Upstream PiShrink (Drewsif).
-#   - Version 1.0.0    - 2026-08-02 - Deutsche Lokalisierung nach Style-Guide:
-#     Header, Hilfe/Version, Logging mit Zeitstempel, --Ende/-E, dokumentierte
-#     Funktionen, zentrale Fehlerbehandlung, deutschsprachige Ausgaben.
-#
-# Lizenz:
-#   MIT (siehe LICENSE) - Open Source
-#
-# Upstream:
-#   https://github.com/Drewsif/PiShrink
-#
-# Aufruf:
-#   sudo ./pishrink.sh [-adhnrsvzZ] [--log] [--Ende|-E] image.img [neu.img]
+# Aufruf / Nutzung
+# ----------------
+#   sudo ./pishrink.sh pi.img
+#   sudo ./pishrink.sh -z -a --log -E backup.img backup-klein.img
 #   ./pishrink.sh --help
 #   ./pishrink.sh --version
 #
-# Parameter:
-#   image.img / neu.img  Typ: Pfad  Standard: Pflicht / optional
-#                        Quellimage; optional Kopie als Arbeitsdatei.
-#                        Beispiel: pi.img pi-klein.img
-#   -s                   Typ: Flag  Standard: aus
-#                        Kein Autoexpand beim ersten Boot.
-#   -v                   Typ: Flag  Standard: aus
-#                        Ausfuehrliche Kompressor-Ausgabe.
-#   -n                   Typ: Flag  Standard: aus
-#                        Keine Upstream-Update-Pruefung.
-#   -r                   Typ: Flag  Standard: aus
-#                        Erweiterte Dateisystem-Reparatur.
-#   -z                   Typ: Flag  Standard: aus
-#                        Nach dem Schrumpfen mit gzip komprimieren.
-#   -Z                   Typ: Flag  Standard: aus
-#                        Nach dem Schrumpfen mit xz komprimieren.
-#   -a                   Typ: Flag  Standard: aus
-#                        Parallele Kompression (pigz / xz -T0).
-#   -d / --log           Typ: Flag  Standard: aus
-#                        Logging in pishrink.log (UTF-8, Zeitstempel).
-#   -h / --help          Hilfe anzeigen und beenden.
-#   --version            Version und Datum anzeigen und beenden.
-#   -E / --Ende          Am Programmende auf Tastendruck warten.
-#
-# Voraussetzung:
-#   Root-Rechte; Tools: parted, losetup, tune2fs, md5sum, e2fsck, resize2fs
-# =============================================================================
 
 # --- Globale Konstanten ------------------------------------------------------
 
-VERSION="1.0.0"
-VERSION_DATUM="2026-08-02"
+VERSION="1.1.0"
+VERSION_DATUM="2026-08-22"
 UPSTREAM_VERSION="v26.03.16"
 UPSTREAM_URL="https://github.com/Drewsif/PiShrink"
 
@@ -240,6 +214,7 @@ zeige_version() {
 	# Beispiel: zeige_version
 	#
 	echo "PiShrink $VERSION ($VERSION_DATUM)"
+	echo "Verkleinert Raspberry-Pi-Images; optional Autoexpand beim naechsten Boot."
 	echo "Basiert auf Upstream $UPSTREAM_VERSION - $UPSTREAM_URL"
 }
 
@@ -283,6 +258,10 @@ Beispiele:
   sudo $0 pi.img
   sudo $0 -z -a pi.img pi-klein.img
   sudo $0 --log -E -r backup.img
+
+Hinweise:
+  Root-Rechte erforderlich (sudo). --help und --version ohne sudo.
+  Falsche Parameter fuehren zu einer Fehlermeldung und Abbruch.
 EOF
 }
 

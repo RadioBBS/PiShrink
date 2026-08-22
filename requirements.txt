@@ -1,0 +1,27 @@
+# PiShrink – Abhaengigkeitsdatei (kein Python, keine Paketzeilen).
+#
+# Projekt:     PiShrink
+# Modul:       requirements.txt
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+#
+# Historie
+# --------
+# Version 1.1.0 – 2026-08-22 – Erste Fassung im Git-Projekt.
+#
+# Dieses Projekt nutzt kein Python; die Datei bleibt ohne Paketzeilen.
+# Fester Installationsweg (No-Op, pip ignoriert Kommentarzeilen):
+#
+#     python -m pip install -r requirements.txt
+#
+# Systemvoraussetzungen (Debian/Ubuntu/WSL, mit sudo):
+#
+#     sudo apt update
+#     sudo apt install -y wget parted gzip pigz xz-utils udev e2fsprogs

@@ -1,0 +1,45 @@
+# PiShrink – Projektmetadaten (maschinenlesbar, TOML).
+#
+# Projekt:     PiShrink
+# Modul:       project.toml
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+
+[projekt]
+name = "PiShrink"
+zweck = "Raspberry-Pi-Image-Dateien verkleinern und optional komprimieren"
+version = "1.1.0"
+stand = "2026-08-22"
+lizenz = "MIT"
+autor = "(FFHB) / RadioBBS"
+erstellt_mit = "Cursor Grok 4.6"
+upstream = "https://github.com/Drewsif/PiShrink (Drew Bonasera)"
+bezug = "requirements.txt (kein Python)"
+abhaengigkeiten = [
+    "bash >= 4",
+    "Root-Rechte (sudo)",
+    "parted, losetup, tune2fs, md5sum, e2fsck, resize2fs",
+    "optional: gzip/pigz, xz",
+]
+
+[[module]]
+pfad = "pishrink.sh"
+zweck = "Hauptskript (Image verkleinern, optional komprimieren)"
+shell = "WSL/Linux (bash), Ausfuehrung mit sudo"
+
+[[historie]]
+version = "1.0.0"
+datum = "2026-08-02"
+beschreibung = "Deutsche Lokalisierung nach Styleguide"
+
+[[historie]]
+version = "1.1.0"
+datum = "2026-08-22"
+beschreibung = "Styleguide 1.6.0, Autor (FFHB) / RadioBBS, Git-Repo"

@@ -1,8 +1,27 @@
-# Lauf-Logs (ASCII-Dateiname laut Style-Guide)
+# PiShrink – Git-Ausschlussliste.
+#
+# Projekt:     PiShrink
+# Modul:       .gitignore
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+
+# Lokale Arbeitsverzeichnisse (Styleguide)
+__local__/
+__scratch__/
+__testdata__/
+
+# Lauf-Logs (ASCII-Dateiname laut Styleguide)
 pishrink.log
 *.log
 
-# Image-Artefakte
+# Image-Artefakte (nur lokal, nie committen)
 *.img
 *.img.gz
 *.img.xz
@@ -14,6 +33,7 @@ pishrink.log
 Thumbs.db
 *.swp
 *~
+.vscode/
 
 # Backup der Upstream-Dockerfile (falls lokal vorhanden)
 Dockerfile.upstream.bak

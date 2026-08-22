@@ -1,0 +1,43 @@
+# Werte muessen mit den Dateikoepfen uebereinstimmen (eine Quelle der Wahrheit).
+# Styleguide 1.6.0 / Software-Standard 1.1.0 – Agent zuerst diese Datei lesen.
+#
+# Projekt:     PiShrink
+# Modul:       PROJECT.yaml
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum,
+#              e2fsck, resize2fs; optional gzip/pigz, xz
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+
+name: PiShrink
+description: Bash-Skript zum automatischen Verkleinern von Raspberry-Pi-Image-Dateien.
+language: bash
+bash_min: "4"
+license: MIT
+version: "1.1.0"
+stand: "2026-08-22"
+author: (FFHB) / RadioBBS
+scripts:
+  - pishrink.sh
+standards:
+  styleguide: "1.6.0"
+  styleguide_file: "%USERPROFILE%\\Documents\\Cursor\\.Security-and-Styleguide\\0-Style‑Guide.txt"
+  software_standard: "1.1.0"
+  software_standard_file: "%USERPROFILE%\\Documents\\Cursor\\.Security-and-Styleguide\\MY-SOFTWARE-STANDARD v1.0.0.txt"
+testing:
+  framework: none
+  command: "–"
+  required: false
+  live_images: false
+maintenance:
+  status: active
+  owner: RadioBBS
+documentation:
+  language: de
+security:
+  secrets_in_repo: false
+  scans_dot_directories: false
