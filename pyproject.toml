@@ -27,3 +27,9 @@ readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "(FFHB) / RadioBBS" }]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/RadioBBS/PiShrink"
+Repository = "https://github.com/RadioBBS/PiShrink"
+Upstream = "https://github.com/Drewsif/PiShrink"
+

@@ -1,5 +1,5 @@
 # Werte muessen mit den Dateikoepfen uebereinstimmen (eine Quelle der Wahrheit).
-# Styleguide 1.6.0 / Software-Standard 1.1.0 – Agent zuerst diese Datei lesen.
+# Styleguide 1.7.0 / Software-Standard 1.2.0 – Agent zuerst diese Datei lesen.
 #
 # Projekt:     PiShrink
 # Modul:       PROJECT.yaml
@@ -21,18 +21,29 @@ license: MIT
 version: "1.1.0"
 stand: "2026-08-22"
 author: (FFHB) / RadioBBS
+upstream: https://github.com/Drewsif/PiShrink
 scripts:
   - pishrink.sh
+repository:
+  host: github
+  owner: RadioBBS
+  name: PiShrink
+  url: https://github.com/RadioBBS/PiShrink
+  visibility: private
+  default_branch: main
 standards:
-  styleguide: "1.6.0"
+  styleguide: "1.7.0"
   styleguide_file: "%USERPROFILE%\\Documents\\Cursor\\.Security-and-Styleguide\\0-Style‑Guide.txt"
-  software_standard: "1.1.0"
+  software_standard: "1.2.0"
   software_standard_file: "%USERPROFILE%\\Documents\\Cursor\\.Security-and-Styleguide\\MY-SOFTWARE-STANDARD v1.0.0.txt"
 testing:
   framework: none
   command: "–"
   required: false
   live_images: false
+cli:
+  help: [--help, -h]
+  version: [--version]
 maintenance:
   status: active
   owner: RadioBBS
@@ -41,3 +52,7 @@ documentation:
 security:
   secrets_in_repo: false
   scans_dot_directories: false
+machine_readable:
+  - PROJECT.yaml
+  - pyproject.toml
+  - CITATION.cff

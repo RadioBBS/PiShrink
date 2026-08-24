@@ -1,0 +1,29 @@
+# PiShrink – Citation File Format (maschinenlesbare Zitation).
+#
+# Projekt:     PiShrink
+# Modul:       CITATION.cff
+# Version:     1.1.0
+# Stand:       2026-08-22
+# Abhaengig:   bash >= 4; Root-Rechte; parted, losetup, tune2fs, md5sum, e2fsck, resize2fs
+# Bezug:       requirements.txt (kein Python)
+# Lizenz:      MIT
+# Upstream:    https://github.com/Drewsif/PiShrink (Drew Bonasera)
+# Erstellt mit: Cursor Grok 4.6
+# Autor:       (FFHB) / RadioBBS
+#
+# Historie
+# --------
+# Version 1.1.0 – 2026-08-24 – Datei angelegt (Software-Standard 1.2.0).
+
+cff-version: 1.2.0
+message: "Bitte mit diesen Metadaten zitieren."
+title: PiShrink
+abstract: Bash-Skript zum automatischen Verkleinern von Raspberry-Pi-Image-Dateien.
+version: "1.1.0"
+date-released: "2026-08-22"
+license: MIT
+authors:
+  - name: "(FFHB) / RadioBBS"
+repository-code: https://github.com/RadioBBS/PiShrink
+url: https://github.com/RadioBBS/PiShrink
+type: software
