@@ -20,11 +20,12 @@ Bash-Skript zum automatischen Verkleinern von Raspberry-Pi-Image-Dateien. Nach d
 
 Deutsche Lokalisierung von [Drewsif/PiShrink](https://github.com/Drewsif/PiShrink) nach Styleguide 1.6.0 (Hilfe/Version, Logging, `--Ende`, sudo in Beispielen, dokumentierte Funktionen).
 
-| | |
-|---|---|
-| Version | 1.1.0 (2026-08-22) |
-| Upstream | v26.03.16 |
-| Lizenz | MIT |
+|          |                    |
+|----------|--------------------|
+| Version  | 1.1.0 (2026-08-22) |
+| Upstream | v26.03.16          |
+| Lizenz   | MIT                |
+|----------|--------------------|
 
 ## Verwendung
 
@@ -36,21 +37,21 @@ sudo ./pishrink.sh [-adhnrsvzZ] [--log] [--Ende|-E] image.img [neu.img]
 ./pishrink.sh --version
 ```
 
-| Parameter | Beschreibung |
-|---|---|
-| `image.img` | Quell-Image (Pflicht) |
-| `neu.img` | Optionale Arbeitskopie (benoetigt freien Speicher fuer eine volle Kopie) |
-| `-s` | Kein Autoexpand beim ersten Boot |
-| `-v` | Ausfuehrliche Kompressor-Ausgabe |
-| `-n` | Keine Upstream-Update-Pruefung |
-| `-r` | Erweiterte Dateisystem-Reparatur |
-| `-z` | Nach dem Schrumpfen mit gzip komprimieren (`.gz`) |
-| `-Z` | Nach dem Schrumpfen mit xz komprimieren (`.xz`) |
-| `-a` | Parallele Kompression (`pigz` / `xz -T0`) |
-| `-d` / `--log` | Lauf-Log in `pishrink.log` (UTF-8, Debug-Zeitstempel) |
-| `-h` / `--help` | Hilfe (ohne sudo) |
-| `--version` | Versionsnummer, Datum und Programmbeschreibung (ohne sudo) |
-| `-E` / `--Ende` | Am Ende auf Tastendruck warten |
+| Parameter       | Beschreibung                                                             |
+|-----------------|--------------------------------------------------------------------------|
+| `image.img`     | Quell-Image (Pflicht)                                                    |
+| `neu.img`       | Optionale Arbeitskopie (benoetigt freien Speicher fuer eine volle Kopie) |
+| `-s`            | Kein Autoexpand beim ersten Boot                                         |
+| `-v`            | Ausfuehrliche Kompressor-Ausgabe                                         |
+| `-n`            | Keine Upstream-Update-Pruefung                                           |
+| `-r`            | Erweiterte Dateisystem-Reparatur                                         |
+| `-z`            | Nach dem Schrumpfen mit gzip komprimieren (`.gz`)                        |
+| `-Z`            | Nach dem Schrumpfen mit xz komprimieren (`.xz`)                          |
+| `-a`            | Parallele Kompression (`pigz` / `xz -T0`)                                |
+| `-d` / `--log`  | Lauf-Log in `pishrink.log` (UTF-8, Debug-Zeitstempel)                    |
+| `-h` / `--help` | Hilfe (ohne sudo)                                                        |
+| `--version`     | Versionsnummer, Datum und Programmbeschreibung (ohne sudo)               |
+| `-E` / `--Ende` | Am Ende auf Tastendruck warten                                           |
 
 Kompressor-Optionen lassen sich ueber `PISHRINK_GZIP` bzw. `PISHRINK_XZ` ueberschreiben.
 
@@ -92,6 +93,13 @@ alias pishrink='docker run -it --rm --platform linux/arm64 --privileged=true -v 
 ```
 
 Ins Verzeichnis mit dem `.img` wechseln; relative Pfade verwenden.
+
+Abhaengigkeitsdatei auf dem Entwicklungsrechner (auch ohne Paketzeilen):
+
+```bash
+python -m pip install -r requirements.txt
+```
+
 
 ## Beispiele
 
